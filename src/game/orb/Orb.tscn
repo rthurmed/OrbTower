@@ -40,6 +40,7 @@ tracks/0/keys = {
 script = ExtResource( 3 )
 
 [node name="Burst" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, -12 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -13 )

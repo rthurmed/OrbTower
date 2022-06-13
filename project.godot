@@ -10,7 +10,7 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node2D",
-"class": "HealthModule",
+"class": "Health",
 "language": "GDScript",
 "path": "res://src/module/Health.gd"
 }, {
@@ -19,13 +19,13 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/game/monster/Monster.gd"
 }, {
-"base": "Node2D",
+"base": "Reference",
 "class": "Spawner",
 "language": "GDScript",
-"path": "res://src/game/monster/Spawner.gd"
+"path": "res://src/game/monster/spawner/Spawner.gd"
 } ]
 _global_script_class_icons={
-"HealthModule": "",
+"Health": "",
 "Monster": "",
 "Spawner": ""
 }

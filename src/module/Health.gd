@@ -1,4 +1,4 @@
-class_name HealthModule
+class_name Health
 extends Node2D
 
 
@@ -9,7 +9,7 @@ export var destroy_target_on_death = false
 export var target_node_path: NodePath
 
 onready var progress_bar = $ProgressBar
-onready var target_node = get_node(target_node_path)
+onready var target_node = get_node(target_node_path) if target_node_path else null
 
 signal damage(damage, hp)
 signal died
@@ -36,3 +36,9 @@ func hit(damage):
 		emit_signal("died")
 		if destroy_target_on_death:
 			target_node.queue_free()
+
+
+static func cause_damage(area: Node2D, damage: int):
+	var health = area.find_node('Health')
+	if not health.has_method('hit'): return
+	health.hit(damage)

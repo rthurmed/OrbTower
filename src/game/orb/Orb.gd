@@ -3,6 +3,8 @@ extends Node2D
 
 const BASE_DAMAGE = 2
 
+export var target_group = 'enemy'
+
 onready var animation = $AnimationPlayer
 
 
@@ -11,6 +13,5 @@ func _ready():
 
 
 func _on_Burst_area_entered(area: Area2D):
-	var health = area.find_node('Health')
-	if not health is HealthModule: return
-	health.hit(BASE_DAMAGE)
+	if not area.is_in_group(target_group): return
+	Health.cause_damage(area, BASE_DAMAGE)

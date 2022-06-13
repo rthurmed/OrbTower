@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/castle.png" type="Texture" id=3]
 [ext_resource path="res://src/game/orb/Orb.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/game/player/Player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://src/game/ghoul/Ghoul.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/game/monster/ghoul/Ghoul.tscn" type="PackedScene" id=6]
 
 [sub_resource type="NavigationPolygon" id=2]
 vertices = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -113,7 +113,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
 [sub_resource type="Curve2D" id=17]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 208, 354, 0, 0, 0, 0, 207, 329, 0, 0, 0, 0, 238, 306, 0, 0, 0, 0, 295, 304, 0, 0, 0, 0, 331, 274, 0, 0, 0, 0, 329, 244, 0, 0, 0, 0, 304, 228, 0, 0, 0, 0, 265, 255, 0, 0, 0, 0, 198, 258, 0, 0, 0, 0, 182, 272, 0, 0, 0, 0, 56, 271, 0, 0, 0, 0, 56, 227, 0, 0, 0, 0, 146, 188, 0, 0, 0, 0, 263, 192, 0, 0, 0, 0, 281, 171, 0, 0, 0, 0, 264, 145, 0, 0, 0, 0, 218, 144, 0, 0, 0, 0, 193, 127, 0, 0, 0, 0, 193, 98 )
+"points": PoolVector2Array( 0, 0, 0, 0, 209, 374, 0, 0, 0, 0, 208, 329, 0, 0, 0, 0, 238, 306, 0, 0, 0, 0, 295, 304, 0, 0, 0, 0, 331, 274, 0, 0, 0, 0, 329, 244, 0, 0, 0, 0, 304, 228, 0, 0, 0, 0, 265, 255, 0, 0, 0, 0, 198, 258, 0, 0, 0, 0, 182, 272, 0, 0, 0, 0, 56, 271, 0, 0, 0, 0, 56, 227, 0, 0, 0, 0, 146, 188, 0, 0, 0, 0, 263, 192, 0, 0, 0, 0, 281, 171, 0, 0, 0, 0, 264, 145, 0, 0, 0, 0, 218, 144, 0, 0, 0, 0, 193, 127, 0, 0, 0, 0, 193, 98 )
 }
 
 [node name="Main" type="Node2D"]
@@ -142,9 +142,11 @@ polygon = PoolVector2Array( 0, 96, 384, 96, 384, 352, 0, 352, 0, 96, -44, 51, -4
 
 [node name="Ghoul" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 269, 148 )
+path_node_path = NodePath("../../MainPath")
 
 [node name="Ghoul2" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 238, 148 )
+path_node_path = NodePath("../../MainPath")
 
 [node name="Orb" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 229, 167 )
@@ -163,10 +165,5 @@ smoothing_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="Path" type="Path2D" parent="."]
+[node name="MainPath" type="Path2D" parent="."]
 curve = SubResource( 17 )
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path"]
-position = Vector2( 208, 354 )
-rotation = -1.61077
-rotate = false

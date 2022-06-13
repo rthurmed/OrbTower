@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "HealthModule",
 "language": "GDScript",
 "path": "res://src/module/Health.gd"
+}, {
+"base": "Area2D",
+"class": "Monster",
+"language": "GDScript",
+"path": "res://src/game/monster/Monster.gd"
 } ]
 _global_script_class_icons={
-"HealthModule": ""
+"HealthModule": "",
+"Monster": ""
 }
 
 [application]

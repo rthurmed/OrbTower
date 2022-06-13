@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "Monster",
 "language": "GDScript",
 "path": "res://src/game/monster/Monster.gd"
+}, {
+"base": "Node2D",
+"class": "Spawner",
+"language": "GDScript",
+"path": "res://src/game/monster/Spawner.gd"
 } ]
 _global_script_class_icons={
 "HealthModule": "",
-"Monster": ""
+"Monster": "",
+"Spawner": ""
 }
 
 [application]

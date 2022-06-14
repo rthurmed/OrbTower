@@ -23,7 +23,7 @@ func drop_xp_orbs():
 		)
 		var instance = xp_orb.instance()
 		instance.global_position = global_position + offset
-		ysort.add_child(instance)
+		ysort.call_deferred("add_child", instance)
 
 
 func _on_Holder_Health_died():

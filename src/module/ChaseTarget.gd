@@ -12,7 +12,9 @@ onready var target: Node2D
 func setup():
 	holder = get_node(holder_path)
 	target = get_node(target_path)
-	var _ok = target.connect("tree_exiting", self, "_on_Target_tree_exiting")
+	
+	if not target.is_connected("tree_exiting", self, "_on_Target_tree_exiting"):
+		var _ok = target.connect("tree_exiting", self, "_on_Target_tree_exiting")
 
 
 func advance(delta):

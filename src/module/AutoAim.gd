@@ -11,8 +11,10 @@ signal change_target
 func set_target(node: Node2D):
 	if target == node: return
 	target = node
-	var _ok = target.connect("tree_exited", self, "_on_Target_tree_exited")
 	emit_signal("change_target")
+	
+	if not target.is_connected("tree_exited", self, "_on_Target_tree_exited"):
+		var _ok = target.connect("tree_exited", self, "_on_Target_tree_exited")
 
 
 func reload():

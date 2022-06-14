@@ -159,21 +159,14 @@ polygon = PoolVector2Array( 0, 96, 384, 96, 384, 352, 0, 352, 0, 96, -44, 51, -4
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="SpawnerFollower" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( 157, 336 )
-monster = ExtResource( 6 )
-wait_time = 2.0
-ysort_path = NodePath("..")
-path_node_path = NodePath("../../MainPath")
-
 [node name="Orb" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 85, 251 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 194, 219 )
 
-[node name="AutoAttack2" parent="YSort/Player" instance=ExtResource( 9 )]
-position = Vector2( 13, -18 )
+[node name="AutoAttack" parent="YSort/Player" instance=ExtResource( 9 )]
+position = Vector2( 10, -17 )
 bullet = ExtResource( 10 )
 ysort_path = NodePath("../..")
 
@@ -188,9 +181,11 @@ smoothing_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="Ghoul" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 306, 135 )
-path_node_path = NodePath("../../MainPath")
-
 [node name="MainPath" type="Path2D" parent="."]
 curve = SubResource( 17 )
+
+[node name="SpawnerFollower" parent="." instance=ExtResource( 7 )]
+monster = ExtResource( 6 )
+wait_time = 2.0
+ysort_path = NodePath("../YSort")
+path_node_path = NodePath("../MainPath")

@@ -23,4 +23,5 @@ func advance(delta):
 
 
 func _on_Target_tree_exiting():
+	target.disconnect("tree_exiting", self, "_on_Target_tree_exiting")
 	target = null

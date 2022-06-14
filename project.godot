@@ -36,6 +36,10 @@ config/name="OrbTower"
 run/main_scene="res://src/Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Currency="*res://src/game/Currency.gd"
+
 [display]
 
 window/size/width=256

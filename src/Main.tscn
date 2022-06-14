@@ -170,7 +170,7 @@ path_node_path = NodePath("../../MainPath")
 position = Vector2( 85, 251 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 192, 125 )
+position = Vector2( 194, 219 )
 
 [node name="AutoAttack2" parent="YSort/Player" instance=ExtResource( 9 )]
 position = Vector2( 13, -18 )

@@ -5,16 +5,19 @@ export var target_group = 'enemy'
 
 var target: Node2D
 
+signal change_target
+
 
 func set_target(node: Node2D):
 	if target == node: return
 	target = node
 	var _ok = target.connect("tree_exited", self, "_on_Target_tree_exited")
+	emit_signal("change_target")
 
 
 func reload():
-	set_deferred("monitoring", false)
-	set_deferred("monitoring", true)
+	monitoring = false
+	monitoring = true
 
 
 func _on_Target_tree_exited():
@@ -43,4 +46,5 @@ func _on_AutoAim_area_exited(area):
 		target != null and
 		area.name == target.name
 	):
+		target.disconnect("tree_exited", self, "_on_Target_tree_exited")
 		target = null

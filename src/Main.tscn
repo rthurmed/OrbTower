@@ -118,7 +118,7 @@ radius = 20.0
 
 [sub_resource type="Curve2D" id=17]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 320, 175, 0, 0, 0, 0, 193, 104 )
+"points": PoolVector2Array( 0, 0, 0, 0, 309, 195, 0, 0, 0, 0, 193, 102 )
 }
 
 [node name="Main" type="Node2D"]
@@ -165,7 +165,7 @@ ysort_path = NodePath("..")
 path_node_path = NodePath("../../MainPath")
 
 [node name="Orb" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 238, 179 )
+position = Vector2( 85, 251 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 192, 125 )
@@ -180,6 +180,10 @@ limit_bottom = 352
 smoothing_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
+
+[node name="Ghoul" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 306, 135 )
+path_node_path = NodePath("../../MainPath")
 
 [node name="MainPath" type="Path2D" parent="."]
 curve = SubResource( 17 )

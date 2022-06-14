@@ -13,3 +13,5 @@ func _ready():
 
 func _process(delta):
 	chase_target.advance(delta)
+	if chase_target.target == null:
+		queue_free()

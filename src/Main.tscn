@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://assets/tileset.png" type="Texture" id=1]
 [ext_resource path="res://assets/cliff.png" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://src/game/monster/ghoul/Ghoul.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/game/monster/spawner/SpawnerFollower.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/module/Health.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/game/player/AutoAttack.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/game/player/WeakBullet.tscn" type="PackedScene" id=10]
 
 [sub_resource type="NavigationPolygon" id=2]
 vertices = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -169,6 +171,11 @@ position = Vector2( 85, 251 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 192, 125 )
+
+[node name="AutoAttack2" parent="YSort/Player" instance=ExtResource( 9 )]
+position = Vector2( 13, -18 )
+bullet = ExtResource( 10 )
+ysort_path = NodePath("../..")
 
 [node name="Camera2D" type="Camera2D" parent="YSort/Player"]
 position = Vector2( 0, -38 )

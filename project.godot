@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "AutoAim",
+"language": "GDScript",
+"path": "res://src/module/AutoAim.gd"
+}, {
 "base": "Node2D",
 "class": "Health",
 "language": "GDScript",
@@ -19,14 +24,21 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/game/monster/Monster.gd"
 }, {
+"base": "Node2D",
+"class": "Orb",
+"language": "GDScript",
+"path": "res://src/game/orb/Orb.gd"
+}, {
 "base": "Reference",
 "class": "Spawner",
 "language": "GDScript",
 "path": "res://src/game/monster/spawner/Spawner.gd"
 } ]
 _global_script_class_icons={
+"AutoAim": "",
 "Health": "",
 "Monster": "",
+"Orb": "",
 "Spawner": ""
 }
 

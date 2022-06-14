@@ -1,10 +1,13 @@
+class_name Orb
 extends Node2D
 
 
 const BASE_DAMAGE = 2
 
 export var target_group = 'enemy'
+export var ysort_path: NodePath
 
+onready var ysort = get_node(ysort_path)
 onready var animation = $AnimationPlayer
 
 

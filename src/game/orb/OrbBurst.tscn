@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/orb-Sheet.png" type="Texture" id=1]
+[ext_resource path="res://src/game/orb/OrbBurst.gd" type="Script" id=2]
+[ext_resource path="res://assets/orb-Shadow.png" type="Texture" id=3]
+[ext_resource path="res://src/vfx/Burst.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -13 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "bob"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -13 ), Vector2( 0, -15 ), Vector2( 0, -13 ) ]
+}
+
+[node name="OrbBurst" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Burst" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, -12 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -13 )
+texture = ExtResource( 1 )
+hframes = 4
+vframes = 2
+
+[node name="Shadow" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.498039 )
+position = Vector2( 0, -4 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/bob = SubResource( 1 )
+
+[connection signal="area_entered" from="Burst" to="." method="_on_Burst_area_entered"]

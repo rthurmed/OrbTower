@@ -1,3 +1,4 @@
+class_name AutoAim
 extends Area2D
 
 
@@ -6,6 +7,14 @@ export var target_group = 'enemy'
 var target: Node2D
 
 signal change_target
+
+
+func _ready():
+	var _ok
+	if not is_connected("area_entered", self, "_on_AutoAim_area_entered"):
+		_ok = connect("area_entered", self, "_on_AutoAim_area_entered")
+	if not is_connected("area_exited", self, "_on_AutoAim_area_exited"):
+		_ok = connect("area_exited", self, "_on_AutoAim_area_exited")
 
 
 func set_target(node: Node2D):

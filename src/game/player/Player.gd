@@ -4,7 +4,14 @@ extends KinematicBody2D
 const SPEED = 200
 const DECELERATION = 12
 
+onready var xp_label = $UI/XPBar/Label
+
 var move = Vector2.ZERO
+
+
+func _ready():
+	var _ok
+	_ok = Currency.connect("updated", self, "_on_Currency_updated")
 
 
 func _process(delta):
@@ -16,3 +23,12 @@ func _process(delta):
 	i_move = i_move * SPEED
 	move = lerp(move, i_move, delta * DECELERATION)
 	var _slide = move_and_slide(move)
+
+
+func _on_Currency_updated():
+	xp_label.text = str("XP: ", Currency.value)
+
+
+func _on_HandButton_selected(orb_id):
+	# TODO: place orb on placement anchor
+	print(orb_id)

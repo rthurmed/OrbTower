@@ -6,13 +6,8 @@ var value = 0
 signal updated
 
 
-func add(amount):
+func increment(amount):
 	value += amount
-	emit_signal("updated")
-
-
-func remove(amount):
-	value -= amount
 	emit_signal("updated")
 
 

@@ -21,4 +21,4 @@ func _on_AutoAim_change_target():
 func _on_XPOrb_area_entered(area: Area2D):
 	if area.is_in_group('player'):
 		queue_free()
-		Currency.add(VALUE)
+		Currency.increment(VALUE)

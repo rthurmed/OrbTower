@@ -3,7 +3,7 @@ extends Node2D
 
 
 export var monster: PackedScene
-export var wait_time: float = 1
+export var wait_time: float = 60
 export var delay: float = 0
 export var ysort_path: NodePath
 
@@ -23,10 +23,23 @@ func _ready():
 	var _ok = timer.connect("timeout", self, "_on_Timer_timeout")
 
 
+func start():
+	timer.start()
+
+
+func stop():
+	timer.stop()
+
+
 func spawn():
 	var instance = monster.instance()
 	instance.global_position = global_position
 	ysort.add_child(instance)
+
+
+func set_timeout(value):
+	wait_time = value
+	timer.wait_time = value
 
 
 func _on_Timer_timeout():

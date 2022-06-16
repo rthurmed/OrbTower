@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://assets/tileset.png" type="Texture" id=1]
 [ext_resource path="res://assets/cliff.png" type="Texture" id=2]
@@ -12,6 +12,9 @@
 [ext_resource path="res://src/game/player/WeakBullet.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/game/monster/ghoul/GhoulWizard.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/game/monster/ghoul/GhoulMounted.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/game/wave/WaveManager.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/ui-Sheet.png" type="Texture" id=14]
+[ext_resource path="res://src/game/player/XPBar.gd" type="Script" id=15]
 
 [sub_resource type="NavigationPolygon" id=2]
 vertices = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -123,20 +126,24 @@ radius = 37.1214
 [sub_resource type="CircleShape2D" id=20]
 radius = 48.0
 
-[sub_resource type="Curve2D" id=17]
-_data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 290, 388, 0, 0, 0, 0, 325, 347, 0, 0, 0, 0, 148, 291, 0, 0, 0, 0, 75, 191, 0, 0, 0, 0, 111, 132, 0, 0, 0, 0, 156.552, 115.921, 0, 0, 0, 0, 193, 102 )
-}
-
 [sub_resource type="Curve2D" id=21]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -36, 266, 0, 0, 0, 0, 6, 288, 0, 0, 0, 0, 204, 235, 0, 0, 0, 0, 280, 145, 0, 0, 0, 0, 252, 117, 0, 0, 0, 0, 204, 104 )
+}
+
+[sub_resource type="Curve2D" id=17]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 290, 388, 0, 0, 0, 0, 325, 347, 0, 0, 0, 0, 148, 291, 0, 0, 0, 0, 75, 191, 0, 0, 0, 0, 111, 132, 0, 0, 0, 0, 156.552, 115.921, 0, 0, 0, 0, 193, 102 )
 }
 
 [sub_resource type="Curve2D" id=22]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 413, 195, 0, 0, 0, 0, 381, 173, 0, 0, 0, 0, 320, 208, 0, 0, 0, 0, 181, 136, 0, 0, 0, 0, 198, 110 )
 }
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 14 )
+region = Rect2( 0, 0, 80, 16 )
 
 [node name="Main" type="Node2D"]
 
@@ -199,69 +206,104 @@ smoothing_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="DownPath" type="Path2D" parent="."]
-curve = SubResource( 17 )
-
-[node name="SpawnerGhoul" parent="DownPath" instance=ExtResource( 7 )]
-monster = ExtResource( 6 )
-wait_time = 6.0
-ysort_path = NodePath("../../YSort")
-path_node_path = NodePath("..")
-
-[node name="SpawnerStrong" parent="DownPath" instance=ExtResource( 7 )]
-monster = ExtResource( 4 )
-wait_time = 12.0
-delay = 1.0
-ysort_path = NodePath("../../YSort")
-path_node_path = NodePath("..")
-
-[node name="SpawnerWizard" parent="DownPath" instance=ExtResource( 7 )]
-monster = ExtResource( 11 )
-wait_time = 12.0
-ysort_path = NodePath("../../YSort")
-path_node_path = NodePath("..")
-
-[node name="SpawnerMounted" parent="DownPath" instance=ExtResource( 7 )]
-monster = ExtResource( 12 )
-wait_time = 24.0
-ysort_path = NodePath("../../YSort")
-path_node_path = NodePath("..")
-
-[node name="LeftPath" type="Path2D" parent="."]
+[node name="LeftLane" type="Path2D" parent="."]
 curve = SubResource( 21 )
 
-[node name="SpawnerGhoul" parent="LeftPath" instance=ExtResource( 7 )]
+[node name="SpawnerGhoul" parent="LeftLane" instance=ExtResource( 7 )]
 monster = ExtResource( 6 )
-wait_time = 6.0
 ysort_path = NodePath("../../YSort")
 path_node_path = NodePath("..")
 
-[node name="SpawnerWizard" parent="LeftPath" instance=ExtResource( 7 )]
+[node name="SpawnerStrong" parent="LeftLane" instance=ExtResource( 7 )]
+monster = ExtResource( 4 )
+ysort_path = NodePath("../../YSort")
+path_node_path = NodePath("..")
+
+[node name="SpawnerWizard" parent="LeftLane" instance=ExtResource( 7 )]
 monster = ExtResource( 11 )
-wait_time = 12.0
 ysort_path = NodePath("../../YSort")
 path_node_path = NodePath("..")
 
-[node name="SpawnerMounted" parent="LeftPath" instance=ExtResource( 7 )]
+[node name="SpawnerMounted" parent="LeftLane" instance=ExtResource( 7 )]
 monster = ExtResource( 12 )
-wait_time = 36.0
-delay = 8.0
 ysort_path = NodePath("../../YSort")
 path_node_path = NodePath("..")
 
-[node name="RightPath" type="Path2D" parent="."]
+[node name="DownLane" type="Path2D" parent="."]
+curve = SubResource( 17 )
+
+[node name="SpawnerGhoul" parent="DownLane" instance=ExtResource( 7 )]
+monster = ExtResource( 6 )
+ysort_path = NodePath("../../YSort")
+path_node_path = NodePath("..")
+
+[node name="SpawnerStrong" parent="DownLane" instance=ExtResource( 7 )]
+monster = ExtResource( 4 )
+ysort_path = NodePath("../../YSort")
+path_node_path = NodePath("..")
+
+[node name="SpawnerWizard" parent="DownLane" instance=ExtResource( 7 )]
+monster = ExtResource( 11 )
+ysort_path = NodePath("../../YSort")
+path_node_path = NodePath("..")
+
+[node name="SpawnerMounted" parent="DownLane" instance=ExtResource( 7 )]
+monster = ExtResource( 12 )
+ysort_path = NodePath("../../YSort")
+path_node_path = NodePath("..")
+
+[node name="RightLane" type="Path2D" parent="."]
 curve = SubResource( 22 )
 
-[node name="SpawnerStrong" parent="RightPath" instance=ExtResource( 7 )]
-monster = ExtResource( 4 )
-wait_time = 12.0
-delay = 1.0
+[node name="SpawnerGhoul" parent="RightLane" instance=ExtResource( 7 )]
+monster = ExtResource( 6 )
 ysort_path = NodePath("../../YSort")
 path_node_path = NodePath("..")
 
-[node name="SpawnerWizard" parent="RightPath" instance=ExtResource( 7 )]
-monster = ExtResource( 11 )
-wait_time = 12.0
-delay = 24.0
+[node name="SpawnerStrong" parent="RightLane" instance=ExtResource( 7 )]
+monster = ExtResource( 4 )
 ysort_path = NodePath("../../YSort")
 path_node_path = NodePath("..")
+
+[node name="SpawnerWizard" parent="RightLane" instance=ExtResource( 7 )]
+monster = ExtResource( 11 )
+ysort_path = NodePath("../../YSort")
+path_node_path = NodePath("..")
+
+[node name="SpawnerMounted" parent="RightLane" instance=ExtResource( 7 )]
+monster = ExtResource( 12 )
+ysort_path = NodePath("../../YSort")
+path_node_path = NodePath("..")
+
+[node name="Overlay" type="CanvasLayer" parent="."]
+
+[node name="XPBar" type="Control" parent="Overlay"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 15 )
+
+[node name="Sprite" type="Sprite" parent="Overlay/XPBar"]
+position = Vector2( 40, 8 )
+texture = SubResource( 23 )
+
+[node name="Label" type="Label" parent="Overlay/XPBar"]
+margin_left = 17.0
+margin_top = -3.0
+margin_right = 69.0
+margin_bottom = 13.0
+custom_colors/font_color = Color( 1, 0.501961, 0.666667, 1 )
+text = "XP: 0
+"
+
+[node name="Wave" type="Label" parent="Overlay/XPBar"]
+margin_left = 17.0
+margin_top = 4.0
+margin_right = 69.0
+margin_bottom = 20.0
+custom_colors/font_color = Color( 1, 0.501961, 0.666667, 1 )
+text = "WAVE: 1"
+
+[node name="WaveManager" parent="." instance=ExtResource( 13 )]
+lane_paths = [ NodePath("../LeftLane"), NodePath("../DownLane"), NodePath("../RightLane") ]
+
+[connection signal="updated_wave" from="WaveManager" to="Overlay/XPBar" method="_on_WaveManager_updated_wave"]

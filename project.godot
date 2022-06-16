@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/module/AutoAim.gd"
 }, {
+"base": "Monster",
+"class": "Ghoul",
+"language": "GDScript",
+"path": "res://src/game/monster/ghoul/Ghoul.gd"
+}, {
 "base": "Node2D",
 "class": "Health",
 "language": "GDScript",
@@ -24,18 +29,19 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/game/monster/Monster.gd"
 }, {
-"base": "Node2D",
+"base": "Area2D",
 "class": "Orb",
 "language": "GDScript",
 "path": "res://src/game/orb/Orb.gd"
 }, {
-"base": "Reference",
+"base": "Node2D",
 "class": "Spawner",
 "language": "GDScript",
 "path": "res://src/game/monster/spawner/Spawner.gd"
 } ]
 _global_script_class_icons={
 "AutoAim": "",
+"Ghoul": "",
 "Health": "",
 "Monster": "",
 "Orb": "",

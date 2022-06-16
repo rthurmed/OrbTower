@@ -1,9 +1,14 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/orb-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://src/game/orb/OrbBurst.gd" type="Script" id=2]
 [ext_resource path="res://assets/orb-Shadow.png" type="Texture" id=3]
 [ext_resource path="res://src/vfx/Burst.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/module/Health.tscn" type="PackedScene" id=5]
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 8.0
+height = 10.0
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -36,7 +41,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, -13 ), Vector2( 0, -15 ), Vector2( 0, -13 ) ]
 }
 
-[node name="OrbBurst" type="Node2D"]
+[node name="OrbBurst" type="Area2D" groups=["orb"]]
 script = ExtResource( 2 )
 
 [node name="Burst" parent="." instance=ExtResource( 4 )]
@@ -53,8 +58,16 @@ modulate = Color( 1, 1, 1, 0.498039 )
 position = Vector2( 0, -4 )
 texture = ExtResource( 3 )
 
+[node name="Health" parent="." instance=ExtResource( 5 )]
+max_hp = 24
+hp = 24
+destroy_target_on_death = true
+target_node_path = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -9 )
+shape = SubResource( 3 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 2 )
 anims/bob = SubResource( 1 )
-
-[connection signal="area_entered" from="Burst" to="." method="_on_Burst_area_entered"]

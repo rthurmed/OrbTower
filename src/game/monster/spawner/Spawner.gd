@@ -4,6 +4,7 @@ extends Node2D
 
 export var monster: PackedScene
 export var wait_time: float = 1
+export var delay: float = 0
 export var ysort_path: NodePath
 
 onready var ysort = get_node(ysort_path)
@@ -12,6 +13,9 @@ var timer: Timer = null
 
 
 func _ready():
+	if delay > 0:
+		yield(get_tree().create_timer(delay), "timeout")
+	
 	timer = Timer.new()
 	timer.autostart = true
 	timer.wait_time = wait_time

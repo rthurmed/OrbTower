@@ -1,5 +1,5 @@
 class_name Orb
-extends Node2D
+extends Area2D
 
 
 const BASE_DAMAGE = 2

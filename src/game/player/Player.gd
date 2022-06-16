@@ -9,12 +9,10 @@ export var ysort_path: NodePath
 onready var ysort = get_node(ysort_path)
 onready var placement_anchor = $PlacementAnchor
 
-var OrbBurst = preload("res://src/game/orb/OrbBurst.tscn")
-var OrbShoot = preload("res://src/game/orb/OrbShoot.tscn")
 var Orbs = [
-	OrbBurst,
-	OrbShoot,
-	OrbShoot # TODO: Replace
+	preload("res://src/game/orb/OrbBurst.tscn"),
+	preload("res://src/game/orb/OrbShoot.tscn"),
+	preload("res://src/game/orb/OrbHeal.tscn")
 ]
 var move = Vector2.ZERO
 

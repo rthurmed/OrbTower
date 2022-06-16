@@ -1,7 +1,7 @@
 extends Node
 
 
-var value = 0
+var value = 8
 
 signal updated
 

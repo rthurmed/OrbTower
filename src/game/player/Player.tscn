@@ -121,7 +121,7 @@ margin_left = 180.0
 margin_right = 212.0
 orb_id = 2
 keynum = 3
-cost = 9999
+cost = 50
 
 [connection signal="focus" from="UI/PowerBar/HandButton2" to="PlacementAnchor" method="_on_HandButton_focus"]
 [connection signal="selected" from="UI/PowerBar/HandButton2" to="." method="_on_HandButton_selected"]

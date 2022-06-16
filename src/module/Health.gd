@@ -29,6 +29,8 @@ func hit(damage):
 	progress_bar.visible = true
 	
 	hp -= damage
+	hp = clamp(hp, 0, max_hp)
+	
 	update_view()
 	emit_signal("damage", damage, hp)
 	

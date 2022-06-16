@@ -3,9 +3,14 @@ extends AutoAim
 
 export var bullet: PackedScene
 export var ysort_path: NodePath
+export var wait_time = .5
 
 onready var ysort = get_node(ysort_path) if ysort_path else null
 onready var timer = $Timer
+
+
+func _ready():
+	timer.wait_time = wait_time
 
 
 func shoot():

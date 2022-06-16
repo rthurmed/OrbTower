@@ -3,14 +3,14 @@ extends TextureButton
 
 export var orb_id = 0
 export var keynum = 1
-export var amount = 10
+export var cost = 10
 
 onready var animation = $AnimationPlayer
 onready var orb_sprite = $VisualInstance/Orb
-onready var amount_label = $Count/Amount
+onready var cost_label = $Count/Cost
 onready var keynum_label = $Count/KeyNum
 
-signal selected(orb_id)
+signal selected(orb_id, cost)
 signal focus(orb_id)
 signal unfocus(orb_id)
 
@@ -20,9 +20,11 @@ var keybind
 func _ready():
 	keybind = str("power", keynum)
 	orb_sprite.frame = orb_id
-	amount_label.text = str("-", amount)
+	cost_label.text = str("-", cost)
 	keynum_label.text = str(keynum)
-	update_disabled()
+	
+	var _ok = Currency.connect("updated", self, "_on_Currency_updated")
+	_on_Currency_updated()
 
 
 func _process(_delta):
@@ -44,6 +46,16 @@ func update_disabled():
 		animation.play("disable")
 	else:
 		animation.play_backwards("disable")
+
+
+func _on_Currency_updated():
+	var new_disabled = not Currency.has(cost)
+	var value_has_changed = new_disabled != disabled
+	
+	disabled = new_disabled
+	
+	if value_has_changed:
+		update_disabled()
 
 
 func _on_HandButton_focus_entered():
@@ -68,4 +80,4 @@ func _on_HandButton_mouse_exited():
 
 func _on_HandButton_pressed():
 	release_focus()
-	emit_signal("selected", orb_id)
+	emit_signal("selected", orb_id, cost)

@@ -44,8 +44,8 @@ position = Vector2( 0, -4 )
 texture = ExtResource( 3 )
 
 [node name="Health" parent="." instance=ExtResource( 5 )]
-max_hp = 24
-hp = 24
+max_hp = 16
+hp = 16
 destroy_target_on_death = true
 target_node_path = NodePath("..")
 

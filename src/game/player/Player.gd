@@ -30,9 +30,11 @@ func _process(delta):
 	var _slide = move_and_slide(move)
 
 
-func _on_HandButton_selected(orb_id):
+func _on_HandButton_selected(orb_id, cost):
 	var orb_scene = Orbs[orb_id]
 	var instance = orb_scene.instance()
+	
+	Currency.increment(-cost)
 	
 	# TODO: Block from being placed too close from another orb
 	instance.global_position = placement_anchor.global_position

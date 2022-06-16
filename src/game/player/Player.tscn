@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/player.png" type="Texture" id=1]
 [ext_resource path="res://src/game/player/Player.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/orb-Sheet.png" type="Texture" id=7]
 [ext_resource path="res://assets/orb-Shadow.png" type="Texture" id=8]
 [ext_resource path="res://src/game/player/PlacementAnchor.gd" type="Script" id=9]
+[ext_resource path="res://src/game/player/XPBar.gd" type="Script" id=10]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 2.0
@@ -73,6 +74,7 @@ shape = SubResource( 2 )
 [node name="XPBar" type="Control" parent="UI"]
 margin_right = 40.0
 margin_bottom = 40.0
+script = ExtResource( 10 )
 
 [node name="Sprite" type="Sprite" parent="UI/XPBar"]
 position = Vector2( 40, 8 )
@@ -93,7 +95,7 @@ margin_top = 4.0
 margin_right = 69.0
 margin_bottom = 20.0
 custom_colors/font_color = Color( 1, 0.501961, 0.666667, 1 )
-text = "LEVEL: 1"
+text = "WAVE: 1"
 
 [node name="PowerBar" type="HBoxContainer" parent="UI"]
 anchor_top = 1.0
@@ -116,6 +118,7 @@ keynum = 2
 [node name="HandButton3" parent="UI/PowerBar" instance=ExtResource( 5 )]
 margin_left = 180.0
 margin_right = 212.0
+disabled = true
 orb_id = 2
 keynum = 3
 

@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/font/text_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/system/Pause.gd" type="Script" id=3]
+
+[node name="Pause" type="CanvasLayer"]
+pause_mode = 2
+layer = 3
+script = ExtResource( 3 )
+
+[node name="UI" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Backdrop" type="ColorRect" parent="UI"]
+self_modulate = Color( 1, 1, 1, 0.498039 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Label" type="Label" parent="UI"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -63.0
+margin_bottom = -39.0
+custom_fonts/font = ExtResource( 1 )
+text = "PAUSED"
+align = 1
+uppercase = true
+
+[node name="Instruction" type="Label" parent="UI"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -26.0
+margin_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+text = "ESC/P: continue
+
+G: Reset"
+align = 1
+uppercase = true
+
+[node name="Controls" type="Label" parent="UI"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -153.0
+margin_top = 93.0
+margin_right = -52.0
+margin_bottom = 178.0
+custom_fonts/font = ExtResource( 1 )
+text = "Controls:
+
+wasd      -> move
+123           -> switch between orbs
+space  -> place orb"
+uppercase = true

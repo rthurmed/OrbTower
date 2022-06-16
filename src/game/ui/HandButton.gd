@@ -22,6 +22,7 @@ func _ready():
 	orb_sprite.frame = orb_id
 	amount_label.text = str("-", amount)
 	keynum_label.text = str(keynum)
+	update_disabled()
 
 
 func _process(_delta):
@@ -32,12 +33,27 @@ func _process(_delta):
 			grab_focus()
 
 
+func set_disabled(value: bool) -> void:
+	if value == value: return
+	disabled = value
+	update_disabled()
+
+
+func update_disabled():
+	if disabled:
+		animation.play("disable")
+	else:
+		animation.play_backwards("disable")
+
+
 func _on_HandButton_focus_entered():
+	if disabled: return
 	animation.play("focus")
 	emit_signal("focus", orb_id)
 
 
 func _on_HandButton_focus_exited():
+	if disabled: return
 	animation.play_backwards("focus")
 	emit_signal("unfocus", orb_id)
 

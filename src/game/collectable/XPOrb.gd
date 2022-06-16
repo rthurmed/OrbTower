@@ -1,6 +1,7 @@
 extends Area2D
 
 
+# TODO: Make orbs merge, increasing its value (and size!)
 const VALUE = 1
 
 onready var chase_target = $ChaseTarget

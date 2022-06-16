@@ -4,8 +4,19 @@ extends KinematicBody2D
 const SPEED = 200
 const DECELERATION = 12
 
-onready var xp_label = $UI/XPBar/Label
+export var ysort_path: NodePath
 
+onready var ysort = get_node(ysort_path)
+onready var xp_label = $UI/XPBar/Label
+onready var placement_anchor = $PlacementAnchor
+
+var OrbBurst = preload("res://src/game/orb/OrbBurst.tscn")
+var OrbShoot = preload("res://src/game/orb/OrbShoot.tscn")
+var Orbs = [
+	OrbBurst,
+	OrbShoot,
+	OrbShoot # TODO: Replace
+]
 var move = Vector2.ZERO
 
 
@@ -30,5 +41,11 @@ func _on_Currency_updated():
 
 
 func _on_HandButton_selected(orb_id):
-	# TODO: place orb on placement anchor
-	print(orb_id)
+	var orb_scene = Orbs[orb_id]
+	var instance = orb_scene.instance()
+	
+	# TODO: Block from being placed too close from another orb
+	instance.global_position = placement_anchor.global_position
+	instance.ysort_path = ysort_path
+	
+	ysort.add_child(instance)

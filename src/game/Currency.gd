@@ -1,9 +1,14 @@
 extends Node
 
 
-var value = 8
+var value = 0
 
 signal updated
+
+
+func _unhandled_input(event):
+	if event.is_action_released("cheat1"):
+		increment(9999)
 
 
 func increment(amount):

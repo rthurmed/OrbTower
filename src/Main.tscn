@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://assets/tileset.png" type="Texture" id=1]
 [ext_resource path="res://assets/cliff.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://src/game/player/AutoAttack.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/game/player/WeakBullet.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/game/monster/ghoul/GhoulWizard.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/game/monster/ghoul/GhoulMounted.tscn" type="PackedScene" id=12]
 
 [sub_resource type="NavigationPolygon" id=2]
 vertices = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -190,21 +191,27 @@ editor_draw_drag_margin = true
 [node name="MainPath" type="Path2D" parent="."]
 curve = SubResource( 17 )
 
-[node name="SpawnerFollower" parent="." instance=ExtResource( 7 )]
+[node name="SpawnerGhoul" parent="." instance=ExtResource( 7 )]
 monster = ExtResource( 6 )
 wait_time = 2.0
 ysort_path = NodePath("../YSort")
 path_node_path = NodePath("../MainPath")
 
-[node name="SpawnerStrongFollower" parent="." instance=ExtResource( 7 )]
+[node name="SpawnerStrong" parent="." instance=ExtResource( 7 )]
 monster = ExtResource( 4 )
 wait_time = 4.0
 delay = 1.0
 ysort_path = NodePath("../YSort")
 path_node_path = NodePath("../MainPath")
 
-[node name="SpawnerWizardFollower" parent="." instance=ExtResource( 7 )]
+[node name="SpawnerWizard" parent="." instance=ExtResource( 7 )]
 monster = ExtResource( 11 )
 wait_time = 4.0
+ysort_path = NodePath("../YSort")
+path_node_path = NodePath("../MainPath")
+
+[node name="SpawnerMounted" parent="." instance=ExtResource( 7 )]
+monster = ExtResource( 12 )
+wait_time = 8.0
 ysort_path = NodePath("../YSort")
 path_node_path = NodePath("../MainPath")

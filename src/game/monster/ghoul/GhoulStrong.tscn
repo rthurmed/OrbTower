@@ -71,6 +71,7 @@ tracks/1/keys = {
 
 [node name="GhoulStrong" type="Area2D" groups=["enemy"]]
 script = ExtResource( 2 )
+speed = 20
 
 [node name="VisualInstance" type="Node2D" parent="."]
 
@@ -99,7 +100,6 @@ destroy_target_on_death = true
 target_node_path = NodePath("..")
 
 [node name="PathFollower" parent="." instance=ExtResource( 8 )]
-speed = 15
 
 [node name="AttackOnTouch" parent="." instance=ExtResource( 3 )]
 damage = 15

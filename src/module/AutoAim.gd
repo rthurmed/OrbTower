@@ -2,7 +2,10 @@ class_name AutoAim
 extends Area2D
 
 
+const RETARGET_TIME = .2
+
 export var target_group = 'enemy'
+export var single_look = false
 
 var target: Node2D
 
@@ -21,18 +24,12 @@ func set_target(node: Node2D):
 	if target == node: return
 	target = node
 	emit_signal("change_target")
-	
-	if not target.is_connected("tree_exited", self, "_on_Target_tree_exited"):
-		var _ok = target.connect("tree_exited", self, "_on_Target_tree_exited")
 
 
 func reload():
 	monitoring = false
+	yield(get_tree().create_timer(RETARGET_TIME), "timeout")
 	monitoring = true
-
-
-func _on_Target_tree_exited():
-	reload()
 
 
 func _on_AutoAim_area_entered(area: Area2D):
@@ -57,5 +54,7 @@ func _on_AutoAim_area_exited(area):
 		target != null and
 		area.name == target.name
 	):
-		target.disconnect("tree_exited", self, "_on_Target_tree_exited")
 		target = null
+		
+		if not single_look:
+			reload()

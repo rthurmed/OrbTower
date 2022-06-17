@@ -32,6 +32,7 @@ holder_path = NodePath("..")
 
 [node name="AutoAim" parent="." instance=ExtResource( 2 )]
 target_group = "player"
+single_look = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AutoAim"]
 shape = SubResource( 2 )

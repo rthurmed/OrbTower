@@ -17,7 +17,6 @@ func _ready():
 		yield(get_tree().create_timer(delay), "timeout")
 	
 	timer = Timer.new()
-	timer.autostart = true
 	timer.wait_time = wait_time
 	add_child(timer)
 	var _ok = timer.connect("timeout", self, "_on_Timer_timeout")

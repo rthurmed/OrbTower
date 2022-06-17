@@ -4,6 +4,11 @@ extends Spawner
 export var path_node_path: NodePath
 
 
+func _process(_delta):
+	if Input.is_action_just_pressed("ui_end"):
+		print(name, ": ", timer.time_left)
+
+
 func spawn():
 	var instance = monster.instance()
 	instance.global_position = global_position

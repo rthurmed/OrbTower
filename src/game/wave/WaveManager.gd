@@ -15,6 +15,7 @@ var configs = []
 var spawner_nodes = []
 
 signal updated_wave(wave_key)
+signal ended
 
 
 # Each line of the config file will have the amount of entities to spawn per
@@ -58,6 +59,11 @@ func get_wave_config(wave: int):
 
 func advance_current_wave():
 	current += 1
+	
+	if current >= configs.size():
+		emit_signal("ended")
+		return
+	
 	setup_wave(current)
 	emit_signal("updated_wave", current)
 
@@ -76,12 +82,11 @@ func setup_wave(wave_key: int):
 		if spawns_per_minute == 0:
 			spawner.stop()
 			continue
-		else:
-			spawner.start()
 		
 		var wait_time = MINUTE / spawns_per_minute
 		spawner.set_timeout(wait_time)
 		spawner.spawn()
+		spawner.start()
 
 
 func _on_Timer_timeout():

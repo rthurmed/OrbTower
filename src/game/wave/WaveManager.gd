@@ -27,6 +27,7 @@ func _ready():
 	load_config()
 	advance_current_wave()
 	timer.wait_time = wave_time
+	timer.start()
 
 
 func load_spawner_nodes():

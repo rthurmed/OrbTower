@@ -6,6 +6,7 @@ export var max_hp = 10
 export var hp = 10
 export var hp_visible_as_default = false
 export var destroy_target_on_death = false
+export var sfx_death: AudioStream
 export var target_node_path: NodePath
 
 onready var progress_bar = $ProgressBar
@@ -36,6 +37,8 @@ func hit(damage):
 	
 	if hp <= 0:
 		emit_signal("died")
+		if sfx_death != null:
+			SpatialAudioManager.play_at(sfx_death, global_position)
 		if destroy_target_on_death:
 			target_node.queue_free()
 

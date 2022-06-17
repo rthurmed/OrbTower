@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/orb-Shadow.png" type="Texture" id=1]
 [ext_resource path="res://assets/ghoul.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://src/vfx/FlipOnMovement.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/module/AttackOnTouch.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/game/monster/OnDeathDropXP.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/sfx/rubberduck's 80-CC0-creature-SFX/grunt_05.wav" type="AudioStream" id=9]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 7.0
@@ -96,6 +97,7 @@ position = Vector2( 0, -25 )
 max_hp = 6
 hp = 6
 destroy_target_on_death = true
+sfx_death = ExtResource( 9 )
 target_node_path = NodePath("..")
 
 [node name="PathFollower" parent="." instance=ExtResource( 5 )]

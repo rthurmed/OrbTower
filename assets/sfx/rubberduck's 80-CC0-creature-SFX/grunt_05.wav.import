@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/grunt_05.wav-28f0a8c13132b6eb19d5680866de6822.sample"
+
+[deps]
+
+source_file="res://assets/sfx/rubberduck's 80-CC0-creature-SFX/grunt_05.wav"
+dest_files=[ "res://.import/grunt_05.wav-28f0a8c13132b6eb19d5680866de6822.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

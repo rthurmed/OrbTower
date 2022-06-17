@@ -27,9 +27,9 @@ func set_target(node: Node2D):
 
 
 func reload():
-	monitoring = false
+	set_deferred("monitoring", false)
 	yield(get_tree().create_timer(RETARGET_TIME), "timeout")
-	monitoring = true
+	set_deferred("monitoring", true)
 
 
 func _on_AutoAim_area_entered(area: Area2D):

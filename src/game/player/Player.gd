@@ -8,6 +8,7 @@ export var ysort_path: NodePath
 
 onready var ysort = get_node(ysort_path)
 onready var placement_anchor = $PlacementAnchor
+onready var audio_placing = $PlacementAnchor/Placing
 
 var Orbs = [
 	preload("res://src/game/orb/OrbBurst.tscn"),
@@ -39,3 +40,5 @@ func _on_HandButton_selected(orb_id, cost):
 	instance.ysort_path = ysort_path
 	
 	ysort.add_child(instance)
+	
+	audio_placing.play()

@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/player.png" type="Texture" id=1]
 [ext_resource path="res://src/game/player/Player.gd" type="Script" id=2]
 [ext_resource path="res://assets/player-Shadow.png" type="Texture" id=3]
+[ext_resource path="res://assets/sfx/rubberduck's 80-CC0-RPG-SFX/misc_01.wav" type="AudioStream" id=4]
 [ext_resource path="res://src/game/ui/HandButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/ui/placement_anchor.tres" type="Texture" id=6]
 [ext_resource path="res://assets/orb-Sheet.png" type="Texture" id=7]
@@ -52,6 +53,10 @@ vframes = 2
 self_modulate = Color( 1, 1, 1, 0.498039 )
 position = Vector2( 0, -4 )
 texture = ExtResource( 8 )
+
+[node name="Placing" type="AudioStreamPlayer2D" parent="PlacementAnchor"]
+stream = ExtResource( 4 )
+volume_db = -10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

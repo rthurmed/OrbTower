@@ -7,6 +7,7 @@ export var wait_time = .5
 
 onready var ysort = get_node(ysort_path) if ysort_path else null
 onready var timer = $Timer
+onready var audio_attack = $Audio/Attack
 
 
 func _ready():
@@ -27,6 +28,8 @@ func shoot():
 	instance.target_path = target.get_path()
 	
 	ysort.add_child(instance)
+	
+	audio_attack.play()
 
 
 func _on_Timer_timeout():

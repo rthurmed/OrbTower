@@ -82,12 +82,14 @@ alignment = 1
 margin_left = 108.0
 margin_right = 140.0
 orb_id = 1
+description_text = "shoot bullets at the enemies"
 
 [node name="HandButton1" parent="UI/PowerBar" instance=ExtResource( 5 )]
 margin_left = 144.0
 margin_right = 176.0
 keynum = 2
 cost = 30
+description_text = "sets fire to surrounding enemies"
 
 [node name="HandButton3" parent="UI/PowerBar" instance=ExtResource( 5 )]
 margin_left = 180.0
@@ -95,6 +97,7 @@ margin_right = 212.0
 orb_id = 2
 keynum = 3
 cost = 50
+description_text = "heal the orbs around it"
 
 [connection signal="focus" from="UI/PowerBar/HandButton2" to="PlacementAnchor" method="_on_HandButton_focus"]
 [connection signal="selected" from="UI/PowerBar/HandButton2" to="." method="_on_HandButton_selected"]

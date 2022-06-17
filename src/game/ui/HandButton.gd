@@ -4,11 +4,13 @@ extends TextureButton
 export var orb_id = 0
 export var keynum = 1
 export var cost = 10
+export var description_text = ''
 
 onready var animation = $AnimationPlayer
 onready var orb_sprite = $VisualInstance/Orb
 onready var cost_label = $Count/Cost
 onready var keynum_label = $Count/KeyNum
+onready var description = $Description
 
 signal selected(orb_id, cost)
 signal focus(orb_id)
@@ -22,6 +24,7 @@ func _ready():
 	orb_sprite.frame = orb_id
 	cost_label.text = str("-", cost)
 	keynum_label.text = str(keynum)
+	description.text = description_text
 	
 	var _ok = Currency.connect("updated", self, "_on_Currency_updated")
 	_on_Currency_updated()

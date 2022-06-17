@@ -58,6 +58,7 @@ config/icon="res://icon.png"
 
 Currency="*res://src/game/Currency.gd"
 Pause="*res://src/system/Pause.tscn"
+Soundtrack="*res://src/game/Soundtrack.tscn"
 
 [display]
 

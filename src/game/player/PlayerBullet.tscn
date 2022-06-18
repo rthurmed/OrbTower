@@ -22,7 +22,7 @@ shape = SubResource( 1 )
 
 [node name="AttackOnTouch" parent="." instance=ExtResource( 1 )]
 target_group = "enemy"
-damage = 3
+damage = 4
 die_on_impact = true
 holder_path = NodePath("..")
 

@@ -25,6 +25,8 @@ signal ended
 func _unhandled_input(event):
 	if event.is_action_released("skip_wave"):
 		advance_current_wave()
+		if not has_ended():
+			timer.start(0)
 
 
 func _ready():
@@ -63,10 +65,18 @@ func get_wave_config(wave: int):
 	return configs[wave]
 
 
+func get_amount_of_waves():
+	return configs.size()
+
+
+func has_ended():
+	return current >= get_amount_of_waves()
+
+
 func advance_current_wave():
 	current += 1
 	
-	if current >= configs.size():
+	if has_ended():
 		emit_signal("ended")
 		return
 	
@@ -96,3 +106,7 @@ func setup_wave(wave_key: int):
 
 func _on_Timer_timeout():
 	advance_current_wave()
+
+
+func _on_WaveManager_ended():
+	timer.stop()

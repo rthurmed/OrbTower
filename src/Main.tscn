@@ -196,10 +196,9 @@ hp_visible_as_default = true
 sfx_damage = ExtResource( 17 )
 
 [node name="Walls" type="StaticBody2D" parent="."]
-visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
-polygon = PoolVector2Array( 0, 96, 384, 96, 384, 352, 0, 352, 0, 96, -44, 51, -46, 393, 430, 396, 426, 52, -44, 51 )
+polygon = PoolVector2Array( 32, 97, 352, 96, 352, 304, 32, 304, 32, 97, -44, 51, -46, 393, 430, 396, 426, 52, -44, 51 )
 
 [node name="YSort" type="YSort" parent="."]
 

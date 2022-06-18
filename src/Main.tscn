@@ -441,4 +441,40 @@ custom_styles/bg = SubResource( 25 )
 value = 100.0
 percent_visible = false
 
+[node name="YouWin" type="Control" parent="Overlay"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="Overlay/YouWin"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.498039 )
+
+[node name="Title" type="Label" parent="Overlay/YouWin"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -38.0
+margin_right = -160.0
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = ExtResource( 18 )
+text = "CONGRATULATIONS!
+
+YOU WIN!"
+align = 1
+uppercase = true
+
+[node name="Instruction" type="Label" parent="Overlay/YouWin"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = 18.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 18 )
+text = "press 'p'  to keep playing"
+align = 1
+uppercase = true
+
 [connection signal="died" from="Castle/Health" to="." method="_on_Health_died"]
+[connection signal="ended" from="WaveManager" to="." method="_on_WaveManager_ended"]

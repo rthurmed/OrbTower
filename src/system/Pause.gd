@@ -17,5 +17,6 @@ func _unhandled_input(event):
 
 
 func paused(state: bool):
+	if state == get_tree().paused: return
 	get_tree().paused = state
 	ui.visible = state

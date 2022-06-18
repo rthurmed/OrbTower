@@ -112,6 +112,7 @@ die_on_impact = true
 holder_path = NodePath("..")
 
 [node name="OnDeathDropXP" parent="." instance=ExtResource( 6 )]
+amount = 8
 health_path = NodePath("../Health")
 
 [node name="AutoAttack" parent="." instance=ExtResource( 9 )]

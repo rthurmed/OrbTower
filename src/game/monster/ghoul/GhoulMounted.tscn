@@ -95,8 +95,8 @@ shape = SubResource( 1 )
 
 [node name="Health" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, -25 )
-max_hp = 8
-hp = 8
+max_hp = 12
+hp = 12
 destroy_target_on_death = true
 sfx_death = ExtResource( 9 )
 target_node_path = NodePath("..")
@@ -109,7 +109,7 @@ die_on_impact = true
 holder_path = NodePath("..")
 
 [node name="OnDeathDropXP" parent="." instance=ExtResource( 6 )]
-amount = 8
+amount = 12
 health_path = NodePath("../Health")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

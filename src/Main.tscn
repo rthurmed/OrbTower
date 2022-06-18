@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://assets/tileset.png" type="Texture" id=1]
 [ext_resource path="res://assets/cliff.png" type="Texture" id=2]
@@ -204,8 +204,8 @@ _data = {
 atlas = ExtResource( 14 )
 region = Rect2( 0, 0, 80, 16 )
 
-[sub_resource type="StyleBoxFlat" id=24]
-bg_color = Color( 0.882353, 0.254902, 0.254902, 1 )
+[sub_resource type="StyleBoxFlat" id=28]
+bg_color = Color( 0.74902, 0.247059, 0.701961, 1 )
 border_color = Color( 0.215686, 0.145098, 0.219608, 1 )
 
 [sub_resource type="StyleBoxFlat" id=25]
@@ -219,6 +219,10 @@ expand_margin_left = 1.0
 expand_margin_right = 1.0
 expand_margin_top = 1.0
 expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id=24]
+bg_color = Color( 0.882353, 0.254902, 0.254902, 1 )
+border_color = Color( 0.215686, 0.145098, 0.219608, 1 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 16 )
@@ -245,7 +249,7 @@ position = Vector2( 1, 37 )
 shape = SubResource( 19 )
 
 [node name="Health" parent="Castle" instance=ExtResource( 8 )]
-position = Vector2( 0, 22 )
+position = Vector2( 0, 15 )
 max_hp = 150
 hp = 150
 hp_visible_as_default = true
@@ -363,6 +367,9 @@ monster = ExtResource( 12 )
 ysort_path = NodePath("../../YSort")
 path_node_path = NodePath("..")
 
+[node name="WaveManager" parent="." instance=ExtResource( 13 )]
+lane_paths = [ NodePath("../LeftLane"), NodePath("../DownLane"), NodePath("../RightLane") ]
+
 [node name="Overlay" type="CanvasLayer" parent="."]
 
 [node name="XPBar" type="Control" parent="Overlay"]
@@ -370,6 +377,7 @@ anchor_right = 1.0
 margin_bottom = 41.0
 script = ExtResource( 15 )
 castle_health_path = NodePath("../../Castle/Health")
+wave_manager_path = NodePath("../../WaveManager")
 
 [node name="Sprite" type="Sprite" parent="Overlay/XPBar"]
 position = Vector2( 40, 8 )
@@ -391,6 +399,18 @@ margin_right = 69.0
 margin_bottom = 20.0
 custom_colors/font_color = Color( 1, 0.501961, 0.666667, 1 )
 text = "WAVE: 1"
+
+[node name="ProgressBar" type="ProgressBar" parent="Overlay/XPBar/Wave"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -41.0
+margin_top = 14.0
+margin_right = 23.0
+margin_bottom = 16.0
+custom_styles/fg = SubResource( 28 )
+custom_styles/bg = SubResource( 25 )
+value = 100.0
+percent_visible = false
 
 [node name="Castle" type="Control" parent="Overlay/XPBar"]
 anchor_left = 0.5
@@ -420,8 +440,3 @@ custom_styles/fg = SubResource( 24 )
 custom_styles/bg = SubResource( 25 )
 value = 100.0
 percent_visible = false
-
-[node name="WaveManager" parent="." instance=ExtResource( 13 )]
-lane_paths = [ NodePath("../LeftLane"), NodePath("../DownLane"), NodePath("../RightLane") ]
-
-[connection signal="updated_wave" from="WaveManager" to="Overlay/XPBar" method="_on_WaveManager_updated_wave"]

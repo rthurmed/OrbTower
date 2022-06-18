@@ -91,7 +91,6 @@ func setup_wave(wave_key: int):
 		
 		var wait_time = MINUTE / spawns_per_minute
 		spawner.set_timeout(wait_time)
-		spawner.spawn()
 		spawner.start()
 
 

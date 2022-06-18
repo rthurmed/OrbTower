@@ -37,6 +37,7 @@ script = ExtResource( 2 )
 [node name="AutoAttack" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, -13 )
 bullet = ExtResource( 5 )
+wait_time = 0.75
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AutoAttack"]
 shape = SubResource( 3 )

@@ -22,6 +22,11 @@ signal ended
 # minute for every spawner of the lanes.
 
 
+func _unhandled_input(event):
+	if event.is_action_released("skip_wave"):
+		advance_current_wave()
+
+
 func _ready():
 	load_spawner_nodes()
 	load_config()

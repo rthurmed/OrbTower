@@ -440,3 +440,5 @@ custom_styles/fg = SubResource( 24 )
 custom_styles/bg = SubResource( 25 )
 value = 100.0
 percent_visible = false
+
+[connection signal="died" from="Castle/Health" to="." method="_on_Health_died"]

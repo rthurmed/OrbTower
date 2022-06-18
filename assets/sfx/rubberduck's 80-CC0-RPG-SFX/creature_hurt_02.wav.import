@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/creature_hurt_02.wav-fb95eb83e92235dbbe62d257d197b626.sample"
+
+[deps]
+
+source_file="res://assets/sfx/rubberduck's 80-CC0-RPG-SFX/creature_hurt_02.wav"
+dest_files=[ "res://.import/creature_hurt_02.wav-fb95eb83e92235dbbe62d257d197b626.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

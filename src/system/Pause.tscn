@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/font/text_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/system/MusicControl.gd" type="Script" id=2]
 [ext_resource path="res://src/system/Pause.gd" type="Script" id=3]
 
 [node name="Pause" type="CanvasLayer"]
@@ -59,3 +60,28 @@ wasd      -> move
 123           -> switch between orbs
 space  -> place orb"
 uppercase = true
+
+[node name="MusicControl" type="Control" parent="UI"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -65.0
+margin_top = -20.0
+script = ExtResource( 2 )
+
+[node name="CheckButton" type="CheckButton" parent="UI/MusicControl"]
+margin_right = 76.0
+margin_bottom = 40.0
+rect_scale = Vector2( 0.5, 0.5 )
+focus_mode = 0
+
+[node name="Label" type="Label" parent="UI/MusicControl"]
+margin_left = 40.0
+margin_top = 14.0
+margin_right = 80.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 1 )
+text = "MUSIC"
+
+[connection signal="toggled" from="UI/MusicControl/CheckButton" to="UI/MusicControl" method="_on_CheckButton_toggled"]

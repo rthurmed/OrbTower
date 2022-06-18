@@ -39,7 +39,7 @@ margin_bottom = 1.0
 custom_fonts/font = ExtResource( 1 )
 text = "ESC/P: continue
 
-G: Reset"
+R: Reset"
 align = 1
 uppercase = true
 

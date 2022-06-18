@@ -1,7 +1,6 @@
 extends Area2D
 
 
-# TODO: Make orbs merge, increasing its value (and size!)
 const VALUE = 1
 
 onready var chase_target = $ChaseTarget
@@ -23,3 +22,8 @@ func _on_XPOrb_area_entered(area: Area2D):
 	if area.is_in_group('player'):
 		queue_free()
 		Currency.increment(VALUE)
+
+
+func _on_Timer_timeout():
+	# Kill it after a certain time
+	queue_free()

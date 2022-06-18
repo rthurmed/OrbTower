@@ -94,8 +94,6 @@ shape = SubResource( 1 )
 
 [node name="Health" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, -25 )
-max_hp = 6
-hp = 6
 destroy_target_on_death = true
 sfx_death = ExtResource( 9 )
 target_node_path = NodePath("..")

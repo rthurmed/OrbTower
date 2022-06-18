@@ -7,7 +7,9 @@ export var hp = 10
 export var hp_visible_as_default = false
 export var destroy_target_on_death = false
 export var sfx_death: AudioStream
+export var sfx_damage: AudioStream
 export var target_node_path: NodePath
+export var progress_length = 16
 
 onready var progress_bar = $ProgressBar
 onready var target_node = get_node(target_node_path) if target_node_path else null
@@ -18,6 +20,7 @@ signal died
 
 func _ready():
 	progress_bar.visible = hp_visible_as_default
+	progress_bar.rect_size.x = progress_length
 	update_view()
 
 
@@ -34,6 +37,9 @@ func hit(damage):
 	
 	update_view()
 	emit_signal("damage", damage, hp)
+	
+	if hp > 0 and sfx_damage != null:
+		SpatialAudioManager.play_at(sfx_damage, global_position)
 	
 	if hp <= 0:
 		emit_signal("died")

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/creature_misc_05.wav-12a798fff5d9bd9f7e55f2cd951aa501.sample"
+
+[deps]
+
+source_file="res://assets/sfx/rubberduck's 80-CC0-RPG-SFX/creature_misc_05.wav"
+dest_files=[ "res://.import/creature_misc_05.wav-12a798fff5d9bd9f7e55f2cd951aa501.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

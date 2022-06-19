@@ -8,6 +8,8 @@ onready var you_win = $Overlay/YouWin
 func _ready():
 	# Spawns a ghoul so the player can get an idea of the attacks
 	initial_spawner.spawn()
+	
+	Currency.set_deferred("value", 0)
 
 
 func _process(_delta):

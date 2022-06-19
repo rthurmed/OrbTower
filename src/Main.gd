@@ -10,6 +10,7 @@ func _ready():
 	initial_spawner.spawn()
 	
 	Currency.set_deferred("value", 0)
+	Currency.call_deferred("increment", 0)
 
 
 func _process(_delta):

@@ -27,14 +27,14 @@ tracks/0/keys = {
 "values": [ Vector2( 0, -13 ) ]
 }
 
-[node name="OrbHeal" type="Area2D" groups=["orb"]]
+[node name="OrbHeal" type="Area2D" groups=["orb", "orb-healer"]]
 script = ExtResource( 3 )
 
 [node name="AttackBurst" parent="." instance=ExtResource( 6 )]
 modulate = Color( 0.513726, 0.878431, 0.298039, 1 )
 position = Vector2( 0, -13 )
 wait_time = 5.0
-target_group = "orb"
+target_group = "orb-attacker"
 damage = -1
 
 [node name="Sprite" type="Sprite" parent="."]
